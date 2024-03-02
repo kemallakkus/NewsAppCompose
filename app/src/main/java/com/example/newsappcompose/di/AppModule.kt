@@ -3,9 +3,9 @@ package com.example.newsappcompose.di
 import android.app.Application
 import com.example.newsappcompose.data.manger.LocalUserMangerImpl
 import com.example.newsappcompose.domain.manger.LocalUserManger
-import com.example.newsappcompose.domain.usecases.AppEntryUseCases
-import com.example.newsappcompose.domain.usecases.ReadAppEntry
-import com.example.newsappcompose.domain.usecases.SaveAppEntry
+import com.example.newsappcompose.domain.usecases.appentry.AppEntryUseCases
+import com.example.newsappcompose.domain.usecases.appentry.ReadAppEntry
+import com.example.newsappcompose.domain.usecases.appentry.SaveAppEntry
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

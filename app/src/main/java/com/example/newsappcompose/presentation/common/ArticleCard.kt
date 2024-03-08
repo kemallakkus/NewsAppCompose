@@ -46,7 +46,7 @@ fun ArticleCard(
 
         AsyncImage(
             modifier = modifier.size(ArticleCardSize),
-            contentScale = ContentScale.Fit,
+            contentScale = ContentScale.Crop,
             model = ImageRequest.Builder(context).data(article.urlToImage).build(),
             contentDescription = null
         )

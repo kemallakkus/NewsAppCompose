@@ -1,6 +1,5 @@
 package com.example.newsappcompose.presentation.navgraph
 
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
@@ -11,8 +10,6 @@ import com.example.newsappcompose.presentation.bookmark.BookmarkScreen
 import com.example.newsappcompose.presentation.bookmark.BookmarkViewModel
 import com.example.newsappcompose.presentation.onboarding.OnboardingScreen
 import com.example.newsappcompose.presentation.onboarding.OnboardingViewModel
-import com.example.newsappcompose.presentation.search.SearchScreen
-import com.example.newsappcompose.presentation.search.SearchViewModel
 
 @Composable
 fun NavGraph(

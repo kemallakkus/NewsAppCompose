@@ -4,8 +4,9 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.newsappcompose.domain.model.Article
 
-class NewsPagingSource(
+class SearchNewsPagingSource(
     private val newsApi: NewsApi,
+    private val searchQuery: String,
     private val sources: String
 ): PagingSource<Int, Article>() {
 
@@ -21,9 +22,9 @@ class NewsPagingSource(
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Article> {
         val page = params.key ?: 1
         return try {
-            val newsResponse = newsApi.getNews(page = page, sources = sources)
-            totalNewsCount += newsResponse.articles.size //her istekte haberlerin sayısını bu değişkende topluyoruz
-            val articles = newsResponse.articles.distinctBy { it.title } //aynı başlığa sahip haberleri kaldırıyoruz
+            val newsResponse = newsApi.searchNews(searchQuery = searchQuery, page = page, sources = sources)
+            totalNewsCount += newsResponse.articles.size
+            val articles = newsResponse.articles.distinctBy { it.title }
             LoadResult.Page(
                 data = articles,
                 nextKey = if (totalNewsCount == newsResponse.totalResults) null else page + 1,

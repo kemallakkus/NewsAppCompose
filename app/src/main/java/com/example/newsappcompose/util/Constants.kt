@@ -10,3 +10,7 @@ object Constants {
 
     const val BASE_URL = "https://newsapi.org/v2/"
 }
+
+object Endpoints {
+    const val EVERYTHING = "everything"
+}

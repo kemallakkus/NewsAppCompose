@@ -14,19 +14,27 @@ import androidx.compose.ui.graphics.Color
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.lifecycleScope
+import com.example.newsappcompose.data.local.NewsDao
+import com.example.newsappcompose.domain.model.Article
+import com.example.newsappcompose.domain.model.Source
 import com.example.newsappcompose.presentation.navgraph.NavGraph
 import com.example.newsappcompose.presentation.onboarding.OnboardingScreen
 import com.example.newsappcompose.presentation.onboarding.OnboardingViewModel
 import com.example.newsappcompose.ui.theme.NewsAppComposeTheme
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     val viewModel by viewModels<MainViewModel>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         WindowCompat.setDecorFitsSystemWindows(window, false)
+
         installSplashScreen().apply {
             setKeepOnScreenCondition {
                 viewModel.splashCondition

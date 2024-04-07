@@ -1,7 +1,8 @@
 package com.example.newsappcompose.presentation.bookmark
 
-import androidx.compose.runtime.State
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.newsappcompose.domain.model.Article
@@ -13,11 +14,11 @@ import javax.inject.Inject
 
 @HiltViewModel
 class BookmarkViewModel @Inject constructor(
-    private val newsUseCases: NewsUseCases
-): ViewModel() {
+    private val newsUseCases: NewsUseCases,
+) : ViewModel() {
 
-    private val _state = mutableStateOf(BookmarkState())
-    val state: State<BookmarkState> = _state
+    var state by mutableStateOf(BookmarkState())
+        private set
 
     init {
         getArticles()
@@ -25,12 +26,12 @@ class BookmarkViewModel @Inject constructor(
 
     private fun getArticles() {
         newsUseCases.selectArticles().onEach {
-            _state.value = _state.value.copy(articles = it.asReversed())
+            state = state.copy(articles = it.asReversed())
         }.launchIn(viewModelScope)
     }
 
 }
 
 data class BookmarkState(
-    val articles: List<Article> = emptyList()
+    val articles: List<Article> = emptyList(),
 )

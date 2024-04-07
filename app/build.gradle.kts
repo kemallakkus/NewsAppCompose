@@ -108,4 +108,8 @@ dependencies {
     implementation ("androidx.room:room-ktx:2.6.1")
 
     implementation("com.github.chuckerteam.chucker:library:4.0.0")
+
+    //Coil Gif
+    implementation("io.coil-kt:coil-gif:2.1.0")
+
 }

@@ -152,7 +152,7 @@ fun NewsNavigator() {
 
             composable(route = Route.BookmarkScreen.route) {
                 val viewModel: BookmarkViewModel = hiltViewModel()
-                val state = viewModel.state.value
+                val state = viewModel.state
                 BookmarkScreen(state = state, navigateToDetails = { article ->
                     navigateToDetails(navController = navController, article = article)
                 })

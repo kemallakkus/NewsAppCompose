@@ -22,14 +22,15 @@ class NewsPagingSource(
         val page = params.key ?: 1
         return try {
             val newsResponse = newsApi.getNews(page = page, sources = sources)
-            totalNewsCount += newsResponse.articles.size //her istekte haberlerin sayısını bu değişkende topluyoruz
-            val articles = newsResponse.articles.distinctBy { it.title } //aynı başlığa sahip haberleri kaldırıyoruz
+            val articleCount = newsResponse.articles?.size ?: 0
+            totalNewsCount += articleCount
+            val articles = newsResponse.articles?.distinctBy { it.title }
             LoadResult.Page(
-                data = articles,
+                data = articles.orEmpty(),  // Handle nullability by providing an empty list if articles is null
                 nextKey = if (totalNewsCount == newsResponse.totalResults) null else page + 1,
                 prevKey = null
             )
-        } catch (e:Exception) {
+        } catch (e: Exception) {
             LoadResult.Error(throwable = e)
         }
     }

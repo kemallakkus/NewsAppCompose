@@ -53,7 +53,7 @@ fun HomeScreen(
                             endInclusive = 9
                         )
                     ) // Belirli bir aralıktaki öğeleri alır. Burada, 0 ile 9 (dahil) arasındaki öğeleri alır, yani ilk 10 öğe.
-                    .joinToString(separator = " \ud83d\udFE5 ") { it.title }
+                    .joinToString(separator = " \ud83d\udFE5 ") { it.title ?: "" }
             } else ""
         }
     }

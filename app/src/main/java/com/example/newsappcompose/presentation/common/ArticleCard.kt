@@ -47,7 +47,7 @@ fun ArticleCard(
         AsyncImage(
             modifier = modifier.size(ArticleCardSize),
             contentScale = ContentScale.Crop,
-            model = ImageRequest.Builder(context).data(article.urlToImage).build(),
+            model = ImageRequest.Builder(context).data(article.urlToImage ?: "").build(),
             contentDescription = null
         )
 
@@ -58,7 +58,7 @@ fun ArticleCard(
                 .height(ArticleCardSize)
         ) {
             Text(
-                text = article.title,
+                text = article.title ?: "",
                 style = MaterialTheme.typography.bodyMedium,
                 color = colorResource(id = R.color.text_medium),
                 maxLines = 2,
@@ -67,7 +67,7 @@ fun ArticleCard(
 
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(
-                    text = article.source.name,
+                    text = article.source?.name ?: "",
                     style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Bold),
                     color = colorResource(id = R.color.body)
                 )
@@ -81,7 +81,7 @@ fun ArticleCard(
                 )
                 Spacer(modifier = Modifier.width(ExtraSmallPadding2))
                 Text(
-                    text = article.publishedAt,
+                    text = article.publishedAt ?: "",
                     style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Bold),
                     color = colorResource(id = R.color.body)
                 )
@@ -89,6 +89,7 @@ fun ArticleCard(
         }
     }
 }
+
 
 @Preview(showBackground = true)
 @Preview(showBackground = true, uiMode = UI_MODE_NIGHT_YES)

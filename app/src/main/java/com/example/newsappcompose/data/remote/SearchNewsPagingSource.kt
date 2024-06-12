@@ -23,15 +23,17 @@ class SearchNewsPagingSource(
         val page = params.key ?: 1
         return try {
             val newsResponse = newsApi.searchNews(searchQuery = searchQuery, page = page, sources = sources)
-            totalNewsCount += newsResponse.articles.size
-            val articles = newsResponse.articles.distinctBy { it.title }
+            val articleCount = newsResponse.articles?.size ?: 0
+            totalNewsCount += articleCount
+            val articles = newsResponse.articles?.distinctBy { it.title }
             LoadResult.Page(
-                data = articles,
+                data = articles.orEmpty(),
                 nextKey = if (totalNewsCount == newsResponse.totalResults) null else page + 1,
                 prevKey = null
             )
-        } catch (e:Exception) {
+        } catch (e: Exception) {
             LoadResult.Error(throwable = e)
         }
     }
+
 }

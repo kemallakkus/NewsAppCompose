@@ -82,14 +82,14 @@ fun DetailsScreen(
                 )
                 Spacer(modifier = Modifier.height(MediumPadding1))
                 Text(
-                    text = article.title,
+                    text = article.title ?: "",
                     style = MaterialTheme.typography.displaySmall,
                     color = colorResource(
                         id = R.color.text_title
                     )
                 )
                 Text(
-                    text = article.content,
+                    text = article.content ?: "",
                     style = MaterialTheme.typography.bodyMedium,
                     color = colorResource(
                         id = R.color.body

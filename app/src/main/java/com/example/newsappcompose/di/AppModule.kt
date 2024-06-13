@@ -2,7 +2,6 @@ package com.example.newsappcompose.di
 
 import android.app.Application
 import androidx.room.Room
-import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.example.newsappcompose.data.local.NewsDao
 import com.example.newsappcompose.data.local.NewsDatabase
 import com.example.newsappcompose.data.local.NewsTypeConverter
@@ -82,11 +81,6 @@ object AppModule {
 
         )
     }
-
-    @Provides
-    @Singleton
-    fun provideChuckInterceptor(application: Application) =
-        ChuckerInterceptor.Builder(application).build()
 
     @Provides
     @Singleton

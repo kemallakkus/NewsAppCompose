@@ -29,7 +29,7 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun OnboardingScreen(
-    onEvent: (OnboardingEvent) -> Unit
+    onEvent: (OnboardingEvent) -> Unit,
 ) {
     Column(modifier = Modifier.fillMaxSize()) {
         val pagerState = rememberPagerState(initialPage = 0) {

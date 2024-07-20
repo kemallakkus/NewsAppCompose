@@ -12,7 +12,7 @@ import com.example.newsappcompose.presentation.onboarding.OnboardingViewModel
 
 @Composable
 fun NavGraph(
-    startDestination: String
+    startDestination: String,
 ) {
     val navController = rememberNavController()
 
@@ -25,7 +25,7 @@ fun NavGraph(
                 route = Route.OnboardingScreen.route
             ) {
                 val viewModel: OnboardingViewModel = hiltViewModel()
-                OnboardingScreen(onEvent = viewModel::onEvent) 
+                OnboardingScreen(onEvent = viewModel::onEvent)
             }
         }
 

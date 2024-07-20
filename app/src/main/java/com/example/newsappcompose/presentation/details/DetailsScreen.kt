@@ -33,10 +33,12 @@ import com.example.newsappcompose.ui.theme.NewsAppComposeTheme
 fun DetailsScreen(
     article: Article,
     event: (DetailsEvent) -> Unit,
-    navigateUp: () -> Unit
+    navigateUp: () -> Unit,
 ) {
     val context = LocalContext.current
-    Column(modifier = Modifier.fillMaxSize().statusBarsPadding()) {
+    Column(modifier = Modifier
+        .fillMaxSize()
+        .statusBarsPadding()) {
         DetailsTopBar(
             onBrowsingClick = {
                 Intent(Intent.ACTION_VIEW).also {
